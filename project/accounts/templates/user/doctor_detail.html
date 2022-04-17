@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div dir="rtl">
+    <div class="job_listing_area">
+        <div class="container">
+            {% include 'user/search.html' %}
+            <div class="job_lists">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div >
+                                    {% if doctor.image %}
+                                    <img src="{{doctor.image.url}}" alt="" width="100"  class="img-circle">
+                                    {% else %}
+                                    <img src="{% static 'static_files\img\blog\author.png' %}" alt="" width="100" >
+                                    {% endif %}
+                                </div>
+                                <div class="text-right">
+                                    <a href=""><h1>  دكتور {{ doctor.name }}</h1> </a>
+                                    <h2>نبذة عن الدكتور</h2>
+                                        <div class="location">
+                                            <p style="width: 50%">  {{user.doctor.price}}</p>
+                                            <p style="width: 50%">  {{doctor.who_i}}</p>
+                                            <p style="width: 50%">    الكشف {{doctor.price}}</p>
+                                            <p style="width: 50%"> مدة الانتظار  {{doctor.hour_of_wait}} </p>
+                                            <p style="width: 50%">  عدد ساعات العمل {{doctor.hour_of_work}}</p>
+                                            <p style="width: 50%">  سغر المكالمة{{doctor.mobile}}</p>
+                                            <p style="width: 50%">  سغر المكالمة{{doctor.doctor}}</p>
+                                            <p style="width: 50%">  سغر المكالمة{{doctor.specialist_doctor}}</p>
+                                            <p><a href="{% url 'accounts:doctors_list' %}">قايمة الدكاترة </a></p>
+                                        </div>
+                                        <div class="single_wrap col-sm-4" >
+                                            <h3>صور العيادة</h3>
+                                            {% for i in img %}
+                                            <img src="{{i.image_of_clinic.url}}"  class="col-sm-4">
+                                            {% endfor %}
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">احجز كشف </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_listing_area_end  -->
+</div>
+{% endblock %}
